@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% block body %}
+<style> 
+  h3 {
+    font-family: Garamond;
+    font-size:200%;
+    color: #000;
+    text-align: center;
+    font-weight: bolder;
+    text-decoration: underline;
+  }
+
+  h2 {
+    font-family: Garamond;
+    font-size:120%;
+    color: #000;
+    text-align:center ;
+    font-weight: bolder;
+    text-decoration: none;
+    padding: 0.6em;
+
+  }
+
+  label{
+    font-family: Garamond;
+    text-align: center;
+    font-size:140%;
+    padding: 0.6em;
+    font-weight: 800;
+  }
+
+  input{
+    font-family: Garamond;
+    font-weight: 1000;
+    margin-bottom: 8px;
+  }
+
+  .form-control{
+    height: 30;
+    width: 400;
+
+  }
+
+  .btn-primary{
+          background-color: white;
+          border-width: 2;
+          border-radius: 12px;
+          padding: 0.5em;
+          font-weight: 20;
+          padding-bottom: 1em;
+          font-size: 20;
+          padding: 0.5em;
+          color: black;
+          font-family:'Gill Sans';
+          text-align: center;
+          text-decoration: none;
+        }
+
+  div{
+    margin-bottom: 5px;
+  }
+  </style>
+  <div class='row'>
+    <div class='col-5 mx-auto'>
+      <h3>Edit user</h3><hr>
+      <h2>WARNING: If The ID is Taken The Database Will Not Update</h2>
+     
+      <form method='post' action='{{url_for("update",entry=data.entry_num)}}'>
+        <div class='form-group'>
+            <label>Name</label>
+            <input type='text' name='name' required class='form-control'>
+          </div>
+          <div class='form-group'>
+            <label>ID</label>
+            <input type='text' name='id' required class='form-control'>
+          </div>
+          <div class='form-group'>
+              <label>Points</label>
+              <input type='text' name='points' required class='form-control'>
+          </div>
+        <input type='submit' value='Submit' class='btn btn-primary'>
+      </form>
+    </div>
+  </div>
+{% endblock %}

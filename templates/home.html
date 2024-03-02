@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% block body %}
+    <style> 
+        table, th, td { 
+          border:1px solid black; 
+          background-color: rgba(255, 255, 255, 0.5);
+          font-family: Garamond;
+          text-align: center;
+        } 
+        th{
+          font-size:100%;
+          padding: 0.5em;
+        }
+
+        td{
+          font-size:100%;
+          padding: 0.6em;
+          font-weight: 100;
+        }
+
+        h3 {
+          font-family: Garamond;
+          font-size:200%;
+          color: #000;
+          text-align: center;
+          font-weight: bolder;
+          text-decoration: underline;
+        }
+
+        h2 {
+          font-family: Garamond;
+          font-size:120%;
+          color: #000;
+          text-align:left ;
+          font-weight: bolder;
+          text-decoration: underline;
+        }
+
+        .btn_add{
+          background-color: green;
+          border-radius: 12px;
+          padding: 0.5em;
+          font-weight: 20;
+          padding-bottom: 1em;
+        }
+
+        a, p{
+          padding: 0.5em;
+          color: white;
+          font-family:'Gill Sans';
+          text-align: center;
+          text-decoration: none;
+        }
+
+        .btn_table{
+          background-color: red;
+          border-radius: 12px;
+        }
+
+    </style> 
+    <div>
+    <h3>CURD APP HOMEWORK</h3>
+    <h2>Notes for App</h2>
+    <ul>
+      <li>
+          EDIT and ADD USER command will not add the user if the user id already exists.
+      </li>
+    </ul>
+    <p><a href='{{url_for("add")}}' class='btn_add'>ADD USER</a></p>
+    <body> 
+      <table style="width:100%"> 
+            <tr> 
+              <th>Entry Num</th> 
+              <th>Name</th> 
+              <th>ID</th> 
+              <th>Points</th>
+              <th>DELETE COMMAND</th>
+              <th>EDIT COMMAND</th>
+            </tr> 
+            {%for user in data%} 
+               <tr> 
+                 <td>{{user[0]}}</td> 
+                 <td>{{user[1]}}</td> 
+                 <td>{{user[2]}}</td> 
+                 <td>{{user[3]}}</td> 
+                 <td><a href='{{url_for("delete", entry =user[0])}}' class='btn_table'>Delete</a></td>
+                 <td><a href='{{url_for("update", entry =user[0])}}' class='btn_table'>Edit</a></td>
+                </tr> 
+            {%endfor%} 
+          </table>           
+    </body>
+    </div> 
+  {% endblock %}
